@@ -19,7 +19,7 @@ if [[ -z "$quantity" || "$quantity" = *[!0-9]* ]]; then
    echo "error"
    exit 1
 fi
-if [[$quantity < 1 || $quantity > 1000 ]]; then
+if [[ $quantity -lt 1 || $quantity -gt 1000 ]]; then
    echo "invalid quantity"
    exit 1
 fi
