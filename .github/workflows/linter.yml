@@ -24,7 +24,7 @@ on:
 permissions:
   contents: read
   statuses: write # <--- This gives the linter permission to use the Status API
-  statuses: write
+  
 
 jobs:
   lint:
