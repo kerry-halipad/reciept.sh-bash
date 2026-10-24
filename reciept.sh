@@ -1,8 +1,8 @@
 #!/bin/bash
-read -p "what is your name? " name
-read -p "item name " item
-read -p "what is the price ? " price
-read -p "what's the quantity ? " quantity
+read -r -p "what is your name? " name
+read -r -p "item name " item
+read -r -p "what is the price ? " price
+read -r -p "what's the quantity ? " quantity
 
 if [[ -z "$name" ]]; then 
    name="Client"
@@ -19,7 +19,7 @@ if [[ -z "$quantity" || "$quantity" = *[!0-9]* ]]; then
    echo "error"
    exit 1
 fi
-if (( $quantity < 1 || $quantity > 1000 )); then
+if [[ $quantity -lt 1 || $quantity -gt 1000 ]]; then
    echo "invalid quantity"
    exit 1
 fi
@@ -32,8 +32,17 @@ elif (( subtotal >= 20000 )); then
 else
        pct=0
 fi
-echo "subtotal:$subtotal"
-#    echo "Subtotal : $Subtotal"
+
+discount=$(( subtotal * pct/100 ))
+after=$(( subtotal-discount ))
+VAT=$(( after*1925/10000 ))
+TOTAL=$(( after+VAT ))
+   echo "subtotal : $subtotal"
+   echo "discount : $discount"
+   echo "VAT : $VAT"
+   echo "TOTAL: $TOTAL"
+
+
 
 # if [ "$Subtotal" -ge 100000 ] ; then
 #    discount=$(( Subtotal*10/100 ))
