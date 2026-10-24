@@ -32,8 +32,17 @@ elif (( subtotal >= 20000 )); then
 else
        pct=0
 fi
-echo "subtotal:$subtotal"
-#    echo "Subtotal : $Subtotal"
+
+discount=$(( subtotal * pct/100 ))
+after=$(( subtotal-discount ))
+VAT=$(( after*1925/10000 ))
+TOTAL=$(( after+VAT ))
+   echo "subtotal : $subtotal"
+   echo "discount : $discount"
+   echo "VAT : $VAT"
+   echo "TOTAL: $TOTAL"
+
+
 
 # if [ "$Subtotal" -ge 100000 ] ; then
 #    discount=$(( Subtotal*10/100 ))
